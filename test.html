@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var date = new Date();
+		var date_day = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][date.getDay()];
+		var date_date = date.getDate();
+		var date_month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][date.getMonth()];
+		var date_year = date.getFullYear();
+
+		var match_string = date_day+', '+date_date+' '+date_month+' '+date_year+' ';
+		
+		var date_string = date.toGMTString();
+		
+		date_string = date_string.replace(match_string,'');
+		date_string = date_string.replace(' GMT','').trim();
+
+		date_string = date_string.split(':');
+		
+		var h = date_string[0];
+		var ext = h >= 12 ? 'PM' : 'AM';
+		h = (h%12) || 12;
+		var m = date_string[1];
+		var s = date_string[2];
+
+		var time = h+':'+m+':'+s+' '+ext;
+
+		console.log(time);
+		console.log(match_string);
+	</script>
+</body>
+</html>
